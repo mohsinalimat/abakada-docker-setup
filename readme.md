@@ -64,6 +64,16 @@ Update the `common_site_config.json` from `apps/frappe-bench/sites/`
     "webserver_port": 8000
 }
 ```
+
+or execute
+```sh
+$ docker compose exec frappe bash
+frappe@081dc138d589: bench set-config -g db_host mariadb
+frappe@081dc138d589: bench set-config -g redis_cache redis://redis-cache:6379
+frappe@081dc138d589: bench set-config -g redis_queue redis://redis-queue:6379
+frappe@081dc138d589: bench set-config -g redis_socketio redis://redis-socketio:6379
+```
+
 # Setup project
 
 Create new site
