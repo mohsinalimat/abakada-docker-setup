@@ -105,7 +105,7 @@ Install Abakada erpnext and trinity
 ```sh
 $ docker compose exec frappe bash
 frappe@081dc138d589: bench --site dev.local install-app erpnext
-frappe@081dc138d589: bench --site dev.local install-app trinity_app
+frappe@081dc138d589: bench --site dev.local install-app trinity_erp
 ```
 
 Serve your project
