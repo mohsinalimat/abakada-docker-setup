@@ -26,8 +26,6 @@ services:
       - --skip-innodb-read-only-compressed
     environment:
       MYSQL_ROOT_PASSWORD: 12345
-    volumes:
-      - ./data/mysql:/var/lib/mysql
     ports:
       - "3306:3306"
 
