@@ -11,17 +11,17 @@ $ git clone https://github.com/kabkd/abakada-docker-setup.git
 
 Build the setup
 ``` sh
-$ docker-compose build
+$ docker compose build
 ```
 
 Activate the setup
 ``` sh
-$ docker-compose up -d
+$ docker compose up -d
 ```
 
 View containers
 ```
-$ docker-compose ps
+$ docker compose ps
 NAME                             COMMAND                  SERVICE             STATUS              PORTS
 containerized-adminer-1          "entrypoint.sh docke…"   adminer             running             0.0.0.0:8080->8080/tcp
 containerized-frappe-1           "python3"                frappe              running             0.0.0.0:8000->8000/tcp
@@ -33,21 +33,13 @@ containerized-redis-socketio-1   "docker-entrypoint.s…"   redis-socketio      
 
 Run a command in a running container
 ```sh
-$ docker-compose exec <service> bash
-```
-or 
-```sh
-$ docker-compose exec <service> bash <your command>
-```
-Example
-```shell
-$ docker-compose exec frappe bash bench init --skip-redis-config-generation --frappe-branch version-13
+$ docker compose exec <service> bash
 ```
 
 # Setup Frappe 
 ```sh
-$ docker-compose exec frappe bash
-frappe@081dc138d589: bench init --skip-redis-config-generation --frappe-branch version-13
+$ docker compose exec frappe bash
+frappe@081dc138d589: bench init --skip-redis-config-generation frappe-bench --frappe-branch version-13
 ```
 
 Update the `common_site_config.json` from `apps/frappe-bench/sites/`
@@ -75,19 +67,19 @@ Update the `common_site_config.json` from `apps/frappe-bench/sites/`
 
 Create new site
 ```sh
-$ docker-compose exec frappe bash
+$ docker compose exec frappe bash
 frappe@081dc138d589: bench new-site dev.local --mariadb-root-password 12345 --admin-password admin --no-mariadb-socket --force
 ```
 
 Enable developers mode
 ```sh
-$ docker-compose exec frappe bash
+$ docker compose exec frappe bash
 frappe@081dc138d589: bench --site dev.local set-config developer_mode 1
 ```
 
 Clear cache
 ```sh
-$ docker-compose exec frappe bash
+$ docker compose exec frappe bash
 frappe@081dc138d589: bench --site dev.local clear-cache
 ```
 
@@ -97,27 +89,27 @@ Note:
 If you want to setup Trinity project then choose trinity branch.
 For other projects like mapecon, contact mapecon devs.
 ```sh
-$ docker-compose exec frappe bash
+$ docker compose exec frappe bash
 frappe@081dc138d589: bench get-app --branch trinity https://github.com/GURU-ABKD/erpnext.git
 ```
 
 Pull Abakada Trinity.
 If you using http as login, generate token here `https://github.com/settings/tokens`. Use the generated token as password.
 ```sh
-$ docker-compose exec frappe bash
+$ docker compose exec frappe bash
 frappe@081dc138d589: bench get-app https://github.com/GURU-ABKD/trinity-erp.git
 ```
 
-Intall Abakada erpnext and trinity
+Install Abakada erpnext and trinity
 ```sh
-$ docker-compose exec frappe bash
+$ docker compose exec frappe bash
 frappe@081dc138d589: bench --site dev.local install-app erpnext
 frappe@081dc138d589: bench --site dev.local install-app trinity_app
 ```
 
 Serve your project
 ```sh
-$ docker-compose exec frappe bash
+$ docker compose exec frappe bash
 frappe@081dc138d589: bench start
 ```
 
@@ -127,7 +119,7 @@ Other bench commands:
 
 # To restore database backup
 ```sh
-$ docker-compose exec frappe bash
+$ docker compose exec frappe bash
 frappe@081dc138d589: bench --force --site dev.local restore <path.sql>
 frappe@081dc138d589: bench --site dev.local migrate
 ```
