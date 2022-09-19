@@ -64,6 +64,7 @@ Update the `common_site_config.json` from `apps/frappe-bench/sites/`
     "webserver_port": 8000
 }
 ```
+# Setup project
 
 Create new site
 ```sh
