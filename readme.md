@@ -76,13 +76,13 @@ frappe@081dc138d589: bench set-config -g redis_socketio redis://redis-socketio:6
 
 # Setup project
 
-Create new site
+Create a new site
 ```sh
 $ docker compose exec frappe bash
 frappe@081dc138d589: bench new-site dev.local --mariadb-root-password 12345 --admin-password admin --no-mariadb-socket --force
 ```
 
-Enable developers mode
+Enable developer mode
 ```sh
 $ docker compose exec frappe bash
 frappe@081dc138d589: bench --site dev.local set-config developer_mode 1
